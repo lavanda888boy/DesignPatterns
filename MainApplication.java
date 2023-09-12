@@ -27,6 +27,6 @@ public class MainApplication {
         StreamingApi api = new StreamingApi(server);
 
         api.setClient(u1);
-        api.watchContent("Glass", 120);
+        api.downloadContent("Glass");
     }
 }

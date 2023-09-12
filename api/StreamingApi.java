@@ -31,6 +31,7 @@ public class StreamingApi implements ClientServerCommunication {
     public void downloadContent(String contentName) {
         this.client.downloadMovie(contentName);
         this.server.displayMovie(this.client, contentName);
+        this.server.sendRecommendations(this.client);
     }
 
     @Override
