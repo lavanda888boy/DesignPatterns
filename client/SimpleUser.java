@@ -7,17 +7,21 @@ public class SimpleUser extends User {
     }
 
     @Override
-    public void watchTVSeries(int episodeTime) {
-
+    public void watchMovie(String movieName, int episodeTime) {
+        int advertisementPauses = episodeTime / 4;
+        System.out.println(this.getClass().getName() + " " + this.getName() + " is watching "
+                            + movieName + " of length (minutes) " + episodeTime);
+        System.out.println(this.getName() + " will have " + advertisementPauses + " advertisement pauses");
     }
 
     @Override
-    public void downloadSeries() {
-
+    public void downloadMovie(String movieName) {
+        System.out.println(this.getClass().getName() + " " + this.getName() + " is trying to download " + movieName);
+        System.out.println("The download speed will be half of the usual one");
     }
 
     @Override
     public void cancelSubscription() {
-
+        System.out.println(this.getClass().getName() + " " + this.getName() + " is trying to cancel simple subscription");
     }
 }

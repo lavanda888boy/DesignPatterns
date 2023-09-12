@@ -16,12 +16,12 @@ public class StreamingPlatform implements Streaming, Advertisement {
     }
     
     @Override
-    public void displayTVSeries(User user) {
+    public void displayMovie(User user) {
 
     }
 
     @Override
-    public void streamTVSeries(User user) {
+    public void streamMovie(User user) {
 
     }
 

@@ -7,18 +7,21 @@ public class PremiumUser extends User {
     }
 
     @Override
-    public void watchTVSeries(int episodeTime) {
-
+    public void watchMovie(String movieName, int episodeTime) {
+        System.out.println(this.getClass().getName()+ " " + this.getName() + " is watching "
+                            + movieName + " of length (minutes) " + episodeTime);
+        System.out.println(this.getName() + " will not have any advertisement pauses");
     }
 
     @Override
-    public void downloadSeries() {
-
+    public void downloadMovie(String movieName) {
+        System.out.println(this.getClass().getName()+ " " + this.getName() + " is trying to download " + movieName);
+        System.out.println("The download speed will be boosted");
     }
 
     @Override
     public void cancelSubscription() {
-
+        System.out.println(this.getClass().getName() + " " + this.getName() + " is trying to cancel premium subscription");
     }
 }
 

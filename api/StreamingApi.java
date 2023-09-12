@@ -9,8 +9,7 @@ public class StreamingApi implements ClientServerCommunication {
     
     private final StreamingPlatform server;
 
-    public StreamingApi(User client, StreamingPlatform server) {
-        this.client = client;
+    public StreamingApi(StreamingPlatform server) {
         this.server = server;
     }
 
@@ -23,17 +22,20 @@ public class StreamingApi implements ClientServerCommunication {
     }
     
     @Override
-    public void watchContent() {
-
+    public void watchContent(String contentName, int contentSize) {
+        this.client.watchMovie(contentName, contentSize);
+        this.server.displayMovie(this.client);
     }
 
     @Override
-    public void downloadContent() {
-
+    public void downloadContent(String contentName) {
+        this.client.downloadMovie(contentName);
+        this.server.displayMovie(this.client);
     }
 
     @Override
     public void cancelContentFetch() {
-
+        this.client.cancelSubscription();
+        this.server.handleSubscriptionStatus(this.client);
     }
 }

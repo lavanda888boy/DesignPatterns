@@ -4,7 +4,7 @@ import client.User;
 
 public interface Streaming {
     
-    void displayTVSeries(User user);
+    void displayMovie(User user);
 
-    void streamTVSeries(User user);
+    void streamMovie(User user);
 }
