@@ -13,13 +13,10 @@ public  class User {
 
     private boolean subscriptionStatus;
 
-    private boolean watchingStatus;
-
     public User(String name, boolean subscriptionStatus) {
         this.ID = generateUserID();
         this.name = name;
         this.subscriptionStatus = subscriptionStatus;
-        this.watchingStatus = false;
     }
 
     private int generateUserID() {
@@ -39,20 +36,12 @@ public  class User {
         return this.subscriptionStatus;
     }
 
-    public boolean getWatchingStatus() {
-        return this.watchingStatus;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public void setSubscriptionStatus(boolean subscriptionStatus) {
         this.subscriptionStatus = subscriptionStatus;
-    }
-
-    public void setWatchingStatus(boolean watchingStatus) {
-        this.watchingStatus = watchingStatus;
     }
 
     public void watchMovie(String movieName, int episodeTime) {
