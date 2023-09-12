@@ -8,8 +8,8 @@ public class SimpleUser extends User {
 
     @Override
     public void watchMovie(String movieName, int episodeTime) {
-        int advertisementPauses = episodeTime / 4;
-        System.out.println(this.getClass().getName() + " " + this.getName() + " is watching "
+        int advertisementPauses = episodeTime / 40;
+        System.out.println(this.getClass().getName() + " " + this.getName() + " is trying to watch "
                             + movieName + " of length (minutes) " + episodeTime);
         System.out.println(this.getName() + " will have " + advertisementPauses + " advertisement pauses");
     }

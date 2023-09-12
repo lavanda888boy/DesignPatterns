@@ -8,7 +8,7 @@ public class PremiumUser extends User {
 
     @Override
     public void watchMovie(String movieName, int episodeTime) {
-        System.out.println(this.getClass().getName()+ " " + this.getName() + " is watching "
+        System.out.println(this.getClass().getName()+ " " + this.getName() + " is trying to watch "
                             + movieName + " of length (minutes) " + episodeTime);
         System.out.println(this.getName() + " will not have any advertisement pauses");
     }

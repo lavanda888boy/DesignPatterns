@@ -24,13 +24,13 @@ public class StreamingApi implements ClientServerCommunication {
     @Override
     public void watchContent(String contentName, int contentSize) {
         this.client.watchMovie(contentName, contentSize);
-        this.server.displayMovie(this.client);
+        this.server.displayMovie(this.client, contentName);
     }
 
     @Override
     public void downloadContent(String contentName) {
         this.client.downloadMovie(contentName);
-        this.server.displayMovie(this.client);
+        this.server.displayMovie(this.client, contentName);
     }
 
     @Override
