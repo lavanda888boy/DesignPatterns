@@ -15,9 +15,8 @@ public class MainApplication {
         PremiumUser u2 = new PremiumUser("Harry", true);
         SimpleUser u3 = new SimpleUser("Bella", false);
         
-        List<User> users = new ArrayList<>();
-        users.addAll(Arrays.asList(u1, u2, u3));
-        List<String> films = new ArrayList<>(Arrays.asList("Titanic", "Split", "1+1", "Jaws", "Inception", "Tennant"));
+        List<User> users = new ArrayList<>(Arrays.asList(u1, u2, u3));
+        List<String> films = new ArrayList<>(Arrays.asList("Titanic", "Split", "1+1", "Jaws", "Inception", "Tenant"));
 
         Database db = new Database();
         db.setUsers(users);
@@ -26,7 +25,7 @@ public class MainApplication {
         StreamingPlatform server = new StreamingPlatform(db);
         StreamingApi api = new StreamingApi(server);
 
-        api.setClient(u1);
-        api.downloadContent("Glass");
+        api.setClient(u2);
+        api.cancelContentFetch();
     }
 }

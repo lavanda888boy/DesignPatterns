@@ -96,3 +96,42 @@ That was a short introduction into my project. I did not mention `single respons
 
 
 ## Conclusions / Screenshots / Results
+
+In order to test my project I created a few objects of type `User` and added them into the server database as well as some films. After that I instantiated the `StreamingApi` and performed some actions on the newly created users.
+```
+public class MainApplication {
+    public static void main(String[] args) {
+        SimpleUser u1 = new SimpleUser("Steve", true);
+        PremiumUser u2 = new PremiumUser("Harry", true);
+        SimpleUser u3 = new SimpleUser("Bella", false);
+        
+        List<User> users = new ArrayList<>(Arrays.asList(u1, u2, u3));
+        List<String> films = new ArrayList<>(Arrays.asList("Titanic", "Split", "1+1", "Jaws", "Inception", "Tenant"));
+
+        Database db = new Database();
+        db.setUsers(users);
+        db.setFilms(films);
+
+        StreamingPlatform server = new StreamingPlatform(db);
+        StreamingApi api = new StreamingApi(server);
+```
+Below I am going to show the output of those methods:
+```
+client.SimpleUser Steve is trying to download Glass
+The download speed will be half of the usual one
+Server cannot find film Glass
+Streaming platform suggests client.SimpleUser Steve to watch Split
+```
+
+```
+client.SimpleUser Bella is trying to watch Split of length (minutes) 120
+Bella will have 3 advertisement pauses
+Server displays Split to the client.SimpleUser Bella
+```
+
+```
+client.PremiumUser Harry is trying to cancel premium subscription
+Server cancelled client.PremiumUser Harry's subscription
+```
+
+To sum up, the project works as desired and respects all five SOLID Principles. Next I will try to integrate some design patterns into it. For example, classes `StreamingApi` and `streamingPlatform` can be transformed into singletons. In this way the code will become cleaner and more optimized.
