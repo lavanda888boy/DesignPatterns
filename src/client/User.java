@@ -2,7 +2,7 @@ package src.client;
 
 import java.util.Random;
 
-public  class User {
+public abstract class User {
 
     private final int UPPER_ID_THRESHOLD = 1000000;
     private final int LOWER_ID_THRESHOLD = 100000;
@@ -44,17 +44,9 @@ public  class User {
         this.subscriptionStatus = subscriptionStatus;
     }
 
-    public void watchMovie(String movieName, int episodeTime) {
-        System.out.println(this.getClass().getName() + " " + this.getName() + " is watching "
-                            + movieName + " of length (minutes) " + episodeTime + " in trial period");
-    }
+    public abstract void watchMovie(String movieName, int episodeTime);
 
-    public void downloadMovie(String movieName) {
-        System.out.println(this.getClass().getName() + " " + this.getName() + " is downloading "
-                            + movieName + " in trial period");
-    }
+    public abstract void downloadMovie(String movieName);
 
-    public void cancelSubscription() {
-        System.out.println(this.getClass().getName() + " " + this.getName() + "does not have to cancel anything");
-    }
+    public abstract void cancelSubscription();
 }
