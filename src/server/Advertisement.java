@@ -1,6 +1,6 @@
-package server;
+package src.server;
 
-import client.User;
+import src.client.User;
 
 public interface Advertisement {
     

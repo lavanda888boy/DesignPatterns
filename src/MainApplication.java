@@ -1,13 +1,15 @@
+package src;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import api.StreamingApi;
-import client.PremiumUser;
-import client.SimpleUser;
-import client.User;
-import database.Database;
-import server.StreamingPlatform;
+import src.api.StreamingApi;
+import src.client.PremiumUser;
+import src.client.SimpleUser;
+import src.client.User;
+import src.database.Database;
+import src.server.StreamingPlatform;
 
 public class MainApplication {
     public static void main(String[] args) {

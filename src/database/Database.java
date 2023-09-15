@@ -1,9 +1,9 @@
-package database;
+package src.database;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import client.User;
+import src.client.User;
 
 public class Database {
     

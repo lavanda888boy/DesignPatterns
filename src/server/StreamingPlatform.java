@@ -1,9 +1,9 @@
-package server;
+package src.server;
 
 import java.util.Random;
 
-import client.User;
-import database.Database;
+import src.client.User;
+import src.database.Database;
 
 public class StreamingPlatform implements Streaming, Advertisement {
 
@@ -27,7 +27,7 @@ public class StreamingPlatform implements Streaming, Advertisement {
                 System.out.println("Server cannot find film " + movieName);
             }
         } else {
-            System.out.println(user.getName() + "is not present in the database");
+            System.out.println(user.getName() + "is not present in the src.database");
         }
     }
 
@@ -41,7 +41,7 @@ public class StreamingPlatform implements Streaming, Advertisement {
                 System.out.println("Server cannot find film " + movieName);
             }
         } else {
-            System.out.println(user.getName() + "is not present in the database");
+            System.out.println(user.getName() + "is not present in the src.database");
         }
     }
 
@@ -58,7 +58,7 @@ public class StreamingPlatform implements Streaming, Advertisement {
                 System.out.println("Subscription is not activated");
             }
         } else {
-            System.out.println(user.getName() + "is not present in the database");
+            System.out.println(user.getName() + "is not present in the src.database");
         }
     }
 

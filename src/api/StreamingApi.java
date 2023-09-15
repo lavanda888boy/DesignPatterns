@@ -1,7 +1,7 @@
-package api;
+package src.api;
 
-import client.User;
-import server.StreamingPlatform;
+import src.client.User;
+import src.server.StreamingPlatform;
 
 public class StreamingApi implements ClientServerCommunication {
 
