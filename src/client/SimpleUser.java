@@ -1,9 +1,15 @@
 package src.client;
 
+import src.patterns.creational.builder.UserBuilder;
+
 public class SimpleUser extends User {
     
     public SimpleUser(String name, boolean subscriptionStatus) {
         super(name, subscriptionStatus);
+    }
+
+    public SimpleUser(UserBuilder userBuilder) {
+        super(userBuilder);
     }
 
     @Override

@@ -65,7 +65,7 @@ public class StreamingPlatform implements Streaming, Advertisement {
     @Override
     public void sendRecommendations(User user) {
         Random r = new Random();
-        int filmIndex = r.nextInt(this.database.getUsers().size() - 1);
+        int filmIndex = r.nextInt(this.database.getFilms().size() - 1);
         System.out.println("Streaming platform suggests " + user.getClass().getName() + " " + user.getName() 
                             + " to watch " + this.database.getFilms().get(filmIndex));
     }

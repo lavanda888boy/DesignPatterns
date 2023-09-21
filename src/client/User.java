@@ -2,6 +2,8 @@ package src.client;
 
 import java.util.Random;
 
+import src.patterns.creational.builder.UserBuilder;
+
 public abstract class User {
 
     private final int UPPER_ID_THRESHOLD = 1000000;
@@ -18,6 +20,12 @@ public abstract class User {
         this.name = name;
         this.subscriptionStatus = subscriptionStatus;
     }
+
+    public User(UserBuilder userBuilder) {
+		this.ID = userBuilder.getID();
+		this.name = userBuilder.getName();
+        this.subscriptionStatus = userBuilder.getSubscriptionStatus();
+	}
 
     private int generateUserID() {
         Random r = new Random();
