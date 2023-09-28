@@ -1,7 +1,7 @@
 package src.patterns.creational.builder;
 
-import src.client.PremiumUser;
-import src.client.User;
+import src.app.client.PremiumUser;
+import src.app.client.User;
 
 public class PremiumUserBuilder extends UserBuilder {
     

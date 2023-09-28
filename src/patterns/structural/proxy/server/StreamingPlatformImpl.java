@@ -2,8 +2,8 @@ package src.patterns.structural.proxy.server;
 
 import java.util.Random;
 
-import src.client.User;
-import src.database.Database;
+import src.app.client.User;
+import src.app.database.Database;
 
 public class StreamingPlatformImpl implements StreamingFunctionality {
     

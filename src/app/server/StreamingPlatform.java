@@ -1,9 +1,9 @@
-package src.server;
+package src.app.server;
 
 import java.util.Random;
 
-import src.client.User;
-import src.database.Database;
+import src.app.client.User;
+import src.app.database.Database;
 
 public class StreamingPlatform implements Streaming, Advertisement {
 

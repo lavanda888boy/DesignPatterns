@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import src.api.StreamingApi;
-import src.client.PremiumUser;
-import src.client.SimpleUser;
-import src.client.User;
-import src.database.Database;
-import src.server.StreamingPlatform;
+import src.app.api.StreamingApi;
+import src.app.client.PremiumUser;
+import src.app.client.SimpleUser;
+import src.app.client.User;
+import src.app.database.Database;
+import src.app.server.StreamingPlatform;
 
 public class MainApplication {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package src.patterns.creational.singleton;
 
-import src.api.ClientServerCommunication;
-import src.client.User;
+import src.app.api.ClientServerCommunication;
+import src.app.client.User;
 
 public class StreamingApiSingleton implements ClientServerCommunication {
 

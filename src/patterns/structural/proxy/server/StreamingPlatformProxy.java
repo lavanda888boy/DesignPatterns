@@ -1,7 +1,7 @@
 package src.patterns.structural.proxy.server;
 
-import src.client.User;
-import src.database.Database;
+import src.app.client.User;
+import src.app.database.Database;
 
 public class StreamingPlatformProxy implements StreamingFunctionality {
     

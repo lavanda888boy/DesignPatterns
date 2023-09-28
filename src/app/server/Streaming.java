@@ -1,6 +1,6 @@
-package src.server;
+package src.app.server;
 
-import src.client.User;
+import src.app.client.User;
 
 public interface Streaming {
     

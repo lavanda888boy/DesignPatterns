@@ -1,7 +1,7 @@
 package src.patterns.creational.builder;
 
-import src.client.SimpleUser;
-import src.client.User;
+import src.app.client.SimpleUser;
+import src.app.client.User;
 
 public class SimpleUserBuilder extends UserBuilder {
     

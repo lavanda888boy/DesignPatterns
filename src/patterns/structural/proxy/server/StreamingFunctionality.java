@@ -1,6 +1,6 @@
 package src.patterns.structural.proxy.server;
 
-import src.client.User;
+import src.app.client.User;
 
 public interface StreamingFunctionality {
     

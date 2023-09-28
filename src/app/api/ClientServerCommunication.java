@@ -1,4 +1,4 @@
-package src.api;
+package src.app.api;
 
 public interface ClientServerCommunication {
     

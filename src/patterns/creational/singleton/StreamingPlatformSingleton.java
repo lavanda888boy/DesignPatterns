@@ -1,8 +1,8 @@
 package src.patterns.creational.singleton;
 
-import src.client.User;
-import src.server.Advertisement;
-import src.server.Streaming;
+import src.app.client.User;
+import src.app.server.Advertisement;
+import src.app.server.Streaming;
 
 import java.util.Random;
 

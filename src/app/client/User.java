@@ -1,4 +1,4 @@
-package src.client;
+package src.app.client;
 
 import java.util.Random;
 

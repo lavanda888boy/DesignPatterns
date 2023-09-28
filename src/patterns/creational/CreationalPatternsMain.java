@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import src.client.User;
+import src.app.client.User;
 import src.patterns.creational.builder.PremiumUserBuilder;
 import src.patterns.creational.builder.UserBuilder;
 import src.patterns.creational.factory.UserFactory;

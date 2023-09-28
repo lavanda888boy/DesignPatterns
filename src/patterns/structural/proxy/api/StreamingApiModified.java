@@ -1,6 +1,6 @@
 package src.patterns.structural.proxy.api;
 
-import src.client.User;
+import src.app.client.User;
 import src.patterns.structural.proxy.server.StreamingPlatformImpl;
 
 public class StreamingApiModified implements ClientServerCommunicationModified {

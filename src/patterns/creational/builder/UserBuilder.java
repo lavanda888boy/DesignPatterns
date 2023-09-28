@@ -2,7 +2,7 @@ package src.patterns.creational.builder;
 
 import java.util.Random;
 
-import src.client.User;
+import src.app.client.User;
 
 public abstract class UserBuilder {
     

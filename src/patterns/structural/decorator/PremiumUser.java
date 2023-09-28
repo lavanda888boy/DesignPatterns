@@ -1,6 +1,6 @@
 package src.patterns.structural.decorator;
 
-import src.client.User;
+import src.app.client.User;
 
 public class PremiumUser extends UserDecorator {
     

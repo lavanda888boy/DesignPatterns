@@ -1,9 +1,9 @@
 package src.patterns.creational.singleton;
 
-import src.client.User;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import src.app.client.User;
 
 public class DatabaseSingleton {
     private static DatabaseSingleton dbInstance = null;
