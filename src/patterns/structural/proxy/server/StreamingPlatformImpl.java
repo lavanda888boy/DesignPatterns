@@ -1,37 +1,28 @@
-package src.patterns.creational.singleton;
-
-import src.client.User;
-import src.server.Advertisement;
-import src.server.Streaming;
+package src.patterns.structural.proxy.server;
 
 import java.util.Random;
 
-public class StreamingPlatformSingleton implements Streaming, Advertisement {
+import src.client.User;
+import src.database.Database;
 
-    private static StreamingPlatformSingleton streamingPlatformInstance = null;
+public class StreamingPlatformImpl implements StreamingFunctionality {
+    
+    private final Database database;
 
-    private DatabaseSingleton database;
-
-    private StreamingPlatformSingleton() {
-    }
-
-    public void setDatabase(DatabaseSingleton database) {
+    public StreamingPlatformImpl(Database database) {
         this.database = database;
     }
 
-    public static StreamingPlatformSingleton getStreamingPlatformInstance() {
-        if (streamingPlatformInstance == null) {
-            streamingPlatformInstance = new StreamingPlatformSingleton();
-        }
-        return streamingPlatformInstance;
+    public Database getDatabase() {
+        return this.database;
     }
-
+    
     @Override
-    public void displayMovie(User user, String movieName) {
+    public void displayMovie(User user, String movieName) throws Exception {
         if (this.database.getUsers().contains(user)) {
             if (this.database.getFilms().contains(movieName)) {
                 System.out.println("Server displays " + movieName + " to the "
-                        + user.getClass().getName() + " " + user.getName());
+                                    + user.getClass().getName() + " " + user.getName());
             } else {
                 System.out.println("Server cannot find film " + movieName);
             }
@@ -41,11 +32,11 @@ public class StreamingPlatformSingleton implements Streaming, Advertisement {
     }
 
     @Override
-    public void streamMovie(User user, String movieName) {
+    public void streamMovie(User user, String movieName) throws Exception {
         if (this.database.getUsers().contains(user)) {
             if (this.database.getFilms().contains(movieName)) {
                 System.out.println("Server streams " + movieName + " to the "
-                        + user.getClass().getName() + " " + user.getName());
+                                    + user.getClass().getName() + " " + user.getName());
             } else {
                 System.out.println("Server cannot find film " + movieName);
             }
@@ -55,15 +46,15 @@ public class StreamingPlatformSingleton implements Streaming, Advertisement {
     }
 
     @Override
-    public void handleSubscriptionStatus(User user) {
+    public void handleSubscriptionStatus(User user) throws Exception {
         if (this.database.getUsers().contains(user)) {
             if (user.getSubscriptionStatus()) {
                 user.setSubscriptionStatus(false);
                 System.out.println("Server cancelled " + user.getClass().getName() + " "
-                        + user.getName() + "'s subscription");
+                                    + user.getName() + "'s subscription");
             } else {
                 System.out.println("Server cannot cancel " + user.getClass().getName() + " "
-                        + user.getName() + "'s subscription");
+                                    + user.getName() + "'s subscription");
                 System.out.println("Subscription is not activated");
             }
         } else {
@@ -72,10 +63,10 @@ public class StreamingPlatformSingleton implements Streaming, Advertisement {
     }
 
     @Override
-    public void sendRecommendations(User user) {
+    public void sendRecommendations(User user) throws Exception {
         Random r = new Random();
         int filmIndex = r.nextInt(this.database.getFilms().size() - 1);
-        System.out.println("Streaming platform suggests " + user.getClass().getName() + " " + user.getName()
-                + " to watch " + this.database.getFilms().get(filmIndex));
+        System.out.println("Streaming platform suggests " + user.getClass().getName() + " " + user.getName() 
+                            + " to watch " + this.database.getFilms().get(filmIndex));
     }
 }
