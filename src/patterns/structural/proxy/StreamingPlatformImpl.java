@@ -1,4 +1,4 @@
-package src.patterns.structural.proxy.server;
+package src.patterns.structural.proxy;
 
 import java.util.Random;
 
