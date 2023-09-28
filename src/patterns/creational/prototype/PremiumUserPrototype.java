@@ -26,7 +26,7 @@ public class PremiumUserPrototype extends UserPrototype {
 
     @Override
     public UserPrototype getClone() {
-        PremiumUserPrototype pp = new PremiumUserPrototype(this.getName(), this.getSubscriptionStatus());
+        UserPrototype pp = new PremiumUserPrototype(this.getName(), this.getSubscriptionStatus());
         pp.setID(this.getID());
         return pp;
     }

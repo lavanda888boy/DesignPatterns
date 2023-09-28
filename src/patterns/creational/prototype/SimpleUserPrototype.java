@@ -27,7 +27,7 @@ public class SimpleUserPrototype extends UserPrototype {
 
     @Override
     public UserPrototype getClone() {
-        SimpleUserPrototype sp = new SimpleUserPrototype(this.getName(), this.getSubscriptionStatus());
+        UserPrototype sp = new SimpleUserPrototype(this.getName(), this.getSubscriptionStatus());
         sp.setID(this.getID());
         return sp;
     }

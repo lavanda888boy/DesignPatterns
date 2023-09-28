@@ -13,6 +13,10 @@ public class UserComposite extends User {
         super(name, subscriptionStatus);
     }
 
+    public List<User> getUsers() {
+        return this.users;
+    }
+
     public void addUser(User user) {
         this.users.add(user);
     }
