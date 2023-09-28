@@ -2,13 +2,13 @@ package src.patterns.structural.facade;
 
 import src.app.client.User;
 import src.patterns.structural.composite.UserComposite;
-import src.patterns.structural.proxy.StreamingPlatformProxy;
+import src.patterns.structural.proxy.StreamingFunctionality;
 
 public class StreamingFacade implements ClientServerCommunicationModified {
     
-    private final StreamingPlatformProxy server;
+    private final StreamingFunctionality server;
 
-    public StreamingFacade(StreamingPlatformProxy server) {
+    public StreamingFacade(StreamingFunctionality server) {
         this.server = server;
     }
 
@@ -33,6 +33,7 @@ public class StreamingFacade implements ClientServerCommunicationModified {
 
     public void watchContent(UserComposite clientGroup, String contentName, int contentSize) throws Exception {
         clientGroup.watchMovie(contentName, contentSize);
+        System.out.println();
         for (User client : clientGroup.getUsers()) {
             server.displayMovie(client, contentName);
         }
@@ -40,6 +41,7 @@ public class StreamingFacade implements ClientServerCommunicationModified {
 
     public void downloadContent(UserComposite clientGroup, String contentName) throws Exception {
         clientGroup.downloadMovie(contentName);
+        System.out.println();
         for (User client : clientGroup.getUsers()) {
             server.streamMovie(client, contentName);
             server.sendRecommendations(client);
@@ -48,6 +50,7 @@ public class StreamingFacade implements ClientServerCommunicationModified {
 
     public void cancelContentFetch(UserComposite clientGroup) throws Exception {
         clientGroup.cancelSubscription();
+        System.out.println();
         for (User client : clientGroup.getUsers()) {
             server.handleSubscriptionStatus(client);
         }

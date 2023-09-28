@@ -2,10 +2,11 @@ package src.patterns.structural.decorator;
 
 import src.app.client.User;
 
-public class PremiumUser extends UserDecorator {
+public class PremiumUserDecorated extends UserDecorator {
     
-    public PremiumUser(User user) {
+    public PremiumUserDecorated(User user) {
         super(user);
+        System.out.println("The user " + this.getName() + " becomes premium");
     }
 
     @Override

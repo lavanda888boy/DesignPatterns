@@ -2,10 +2,11 @@ package src.patterns.structural.decorator;
 
 import src.app.client.User;
 
-public class SimpleUser extends UserDecorator {
+public class SimpleUserDecorated extends UserDecorator {
     
-    public SimpleUser(User user) {
+    public SimpleUserDecorated(User user) {
         super(user);
+        System.out.println("The user " + this.getName() + " becomes simple");
     }
 
     @Override

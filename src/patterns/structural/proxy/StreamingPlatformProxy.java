@@ -2,6 +2,7 @@ package src.patterns.structural.proxy;
 
 import src.app.client.User;
 import src.app.database.Database;
+import src.patterns.structural.composite.UserComposite;
 
 public class StreamingPlatformProxy implements StreamingFunctionality {
     
@@ -12,6 +13,16 @@ public class StreamingPlatformProxy implements StreamingFunctionality {
     public StreamingPlatformProxy(User user, Database db) {
         if (user.getID() < 100000) {
             userValid = false;
+        }
+        streamingFunctionality = new StreamingPlatformImpl(db);
+    }
+
+    public StreamingPlatformProxy(UserComposite userGroup, Database db) {
+        for (User user : userGroup.getUsers()) {
+            if (user.getID() < 100000) {
+                userValid = false;
+                break;
+            }
         }
         streamingFunctionality = new StreamingPlatformImpl(db);
     }
