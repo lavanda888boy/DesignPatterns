@@ -2,11 +2,11 @@ package src.patterns.structural.decorator;
 
 import src.app.client.User;
 
-public class PremiumUserDecorated extends UserDecorator {
+public class SimpleUserDecorator extends UserDecorator {
     
-    public PremiumUserDecorated(User user) {
+    public SimpleUserDecorator(User user) {
         super(user);
-        System.out.println("The user " + this.getName() + " becomes premium");
+        System.out.println("The user " + this.getName() + " becomes simple");
     }
 
     @Override
@@ -25,8 +25,5 @@ public class PremiumUserDecorated extends UserDecorator {
     public void cancelSubscription() {
         super.cancelSubscription();
         System.out.println(this.getClass().getName() + " has id " + this.getID());
-        this.setSubscriptionStatus(false);
-        System.out.println(this.getClass().getName() + " has the right to cancel the subscription");
     }
 }
-

@@ -18,7 +18,7 @@
 
 `Prototype` pattern lets you copy existing objects without making your code dependent on their classes.
 
-`Singleton`  pattern lets you ensure that a class has only one instance, while providing a global access point to this instance.
+`Singleton` pattern lets you ensure that a class has only one instance, while providing a global access point to this instance.
 
 ## Used Creational Design Patterns: 
 

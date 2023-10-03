@@ -9,7 +9,7 @@ import src.app.client.SimpleUser;
 import src.app.client.User;
 import src.app.database.Database;
 import src.patterns.structural.composite.UserComposite;
-import src.patterns.structural.decorator.PremiumUserDecorated;
+import src.patterns.structural.decorator.PremiumUserDecorator;
 import src.patterns.structural.facade.StreamingFacade;
 import src.patterns.structural.proxy.StreamingFunctionality;
 import src.patterns.structural.proxy.StreamingPlatformProxy;
@@ -19,7 +19,7 @@ public class StructuralPatternsMain {
         User u1 = new SimpleUser("Steve", true);
         User u2 = new PremiumUser("Harry", true);
         User u3 = new SimpleUser("Bella", false);
-        User u4 = new PremiumUserDecorated(new SimpleUser("Andy", true));
+        User u4 = new PremiumUserDecorator(new SimpleUser("Andy", true));
         
         List<User> users = new ArrayList<>(Arrays.asList(u1, u2, u3, u4));
         List<String> films = new ArrayList<>(Arrays.asList("Titanic", "Split", "1+1", "Jaws", "Inception", "Tenant"));
