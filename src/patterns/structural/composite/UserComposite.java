@@ -25,6 +25,7 @@ public class UserComposite extends User {
         this.users.remove(user);
     }
 
+    @Override
     public void watchMovie(String movieName, int episodeTime) {
         System.out.println(this.getClass().getName() + " is watching movie");
         for (User user : this.users) {
@@ -32,6 +33,7 @@ public class UserComposite extends User {
         }
     }
 
+    @Override
     public void downloadMovie(String movieName) {
         System.out.println(this.getClass().getName() + " is downloading movie");
         for (User user : this.users) {
@@ -39,6 +41,7 @@ public class UserComposite extends User {
         }
     }
 
+    @Override
     public void cancelSubscription() {
         System.out.println(this.getClass().getName() + " is trying to cancel subscription");
         for (User user : this.users) {
