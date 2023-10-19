@@ -160,7 +160,7 @@ In this laboratory work I continued the idea of my initial project and added to 
 
     The folder contains three main files: `StreamingFunctionality` interface (it is basically the composition of the original `Streaming` and `Advertisement` interfaces; also all the methods are now able to throw Exceptions), `StreamingPlatformImpl` class which actually is a copy of the original `StreamingPlatform` with the same implementation of the main server related methods; and `StreamingPlatformProxy` class which represents a proxy server.
 
-    Proxy server class contains user validation mechanism based on the ID assigned to the `User` upon creation (there are two constructors inside of it; it can also validate `UserComposite` objects):
+    Proxy server class contains user validation mechanism based on the ID assigned to the `User` upon creation (it can also validate `UserComposite` objects):
     
     ```
     public class StreamingPlatformProxy implements StreamingFunctionality {
@@ -169,22 +169,22 @@ In this laboratory work I continued the idea of my initial project and added to 
 
         private boolean userValid = true;
 
-        public StreamingPlatformProxy(User user, Database db) {
-            if (user.getID() < 100000) {
-                userValid = false;
-            }
-            streamingFunctionality = new StreamingPlatformImpl(db);
-        }
-
-        public StreamingPlatformProxy(UserComposite userGroup, Database db) {
-            for (User user : userGroup.getUsers()) {
+        public StreamingPlatformProxy(User user, DatabaseSingleton db) {
+            if (user instanceof UserComposite) {
+                for (User u : ((UserComposite) user).getUsers()) {
+                    if (u.getID() < 100000) {
+                        userValid = false;
+                        break;
+                    }
+                }
+            } else {
                 if (user.getID() < 100000) {
                     userValid = false;
-                    break;
                 }
             }
             streamingFunctionality = new StreamingPlatformImpl(db);
         }
+        ...
     ```
 
     Other method signatures are the same as in the `StreamingPlatformImpl` class but their contents differ. In each of these methods proxy class verifies if the user or the group of users is valid and either calls method in `StreamingPlatformImpl` or throws an Exception; for example:
@@ -204,7 +204,7 @@ In this laboratory work I continued the idea of my initial project and added to 
 
 ## Conclusions / Screenshots / Results 
 
-For testing structural design patterns I modified the general main application class. Three `User`s are created and added to the `UserComposite` object and the fourth `User` is created using the constructor from the `PremiumuserDecorator` class in order to test later the change in behavior:
+For testing structural design patterns I modified the general main application class. Three `User`s are created and added to the `UserComposite` object and the fourth `User` is created using the constructor from the `PremiumUserDecorator` class in order to test later the change in behavior:
 
 ```
 public class StructuralPatternsMain {
@@ -217,25 +217,25 @@ public class StructuralPatternsMain {
         List<User> users = new ArrayList<>(Arrays.asList(u1, u2, u3, u4));
         List<String> films = new ArrayList<>(Arrays.asList("Titanic", "Split", "1+1", "Jaws", "Inception", "Tenant"));
 
-        Database db = new Database();
+        DatabaseSingleton db = DatabaseSingleton.getDbInstance();
         db.setUsers(users);
         db.setFilms(films);
 
-        UserComposite clientGroup = new UserComposite("C.Nolan lovers", true);
-        clientGroup.addUser(u1);
-        clientGroup.addUser(u2);
-        clientGroup.addUser(u3);
+        User clientGroup = new UserComposite("C.Nolan lovers", true);
+        ((UserComposite) clientGroup).addUser(u1);
+        ((UserComposite) clientGroup).addUser(u2);
+        ((UserComposite) clientGroup).addUser(u3);
         ...
 ```
 
-It can be also noticed that the `Database` object with already created users and films is initialized. Further on, the proxy server instance is created and injected as a dependency into the `StreamingFacade` object which then calls `downloadContent()` method on the newly created `UserComposite` object. After that the user decorator is added to the composition of users to demonstrate new behavior of the decorated user by calling the `cancelContentFetch()` method:
+It can be also noticed that the `DatabaseSingleton` object with already created users and films is initialized. Further on, the proxy server instance is created and injected as a dependency into the `StreamingFacade` object which then calls `downloadContent()` method on the newly created `UserComposite` object. After that the user decorator is added to the composition of users to demonstrate new behavior of the decorated user by calling the `cancelContentFetch()` method:
 
 ```
         ...
-        StreamingFunctionality server = new StreamingPlatformProxy(clientGroup, db);
-        StreamingFacade api = new StreamingFacade(server);
-        api.downloadContent(clientGroup, "Tenant");
-        
+        System.out.println();
+        ((UserComposite) clientGroup).addUser(u4);
+        api.cancelContentFetch(clientGroup);
+
         System.out.println();
         clientGroup.addUser(u4);
         api.cancelContentFetch(clientGroup);
@@ -252,13 +252,14 @@ src.app.client.SimpleUser Steve is trying to download Tenant
 The download speed will be half of the usual one
 src.app.client.PremiumUser Harry is trying to download Tenant
 The download speed will be boosted
+src.app.client.SimpleUser Bella is trying to download Tenant
+The download speed will be half of the usual one
 
 ...
 
 Server streams Tenant to the src.app.client.SimpleUser Steve
-Streaming platform suggests src.app.client.SimpleUser Steve to watch 1+1
 Server streams Tenant to the src.app.client.PremiumUser Harry
-Streaming platform suggests src.app.client.PremiumUser Harry to watch Split
+Server streams Tenant to the src.app.client.SimpleUser Bella
 
 ...
 

@@ -8,6 +8,7 @@ import src.app.client.PremiumUser;
 import src.app.client.SimpleUser;
 import src.app.client.User;
 import src.app.database.Database;
+import src.patterns.creational.singleton.DatabaseSingleton;
 import src.patterns.structural.composite.UserComposite;
 import src.patterns.structural.decorator.PremiumUserDecorator;
 import src.patterns.structural.facade.StreamingFacade;
@@ -24,21 +25,21 @@ public class StructuralPatternsMain {
         List<User> users = new ArrayList<>(Arrays.asList(u1, u2, u3, u4));
         List<String> films = new ArrayList<>(Arrays.asList("Titanic", "Split", "1+1", "Jaws", "Inception", "Tenant"));
 
-        Database db = new Database();
+        DatabaseSingleton db = DatabaseSingleton.getDbInstance();
         db.setUsers(users);
         db.setFilms(films);
 
-        UserComposite clientGroup = new UserComposite("C.Nolan lovers", true);
-        clientGroup.addUser(u1);
-        clientGroup.addUser(u2);
-        clientGroup.addUser(u3);
+        User clientGroup = new UserComposite("C.Nolan lovers", true);
+        ((UserComposite) clientGroup).addUser(u1);
+        ((UserComposite) clientGroup).addUser(u2);
+        ((UserComposite) clientGroup).addUser(u3);
 
         StreamingFunctionality server = new StreamingPlatformProxy(clientGroup, db);
         StreamingFacade api = new StreamingFacade(server);
         api.downloadContent(clientGroup, "Tenant");
         
         System.out.println();
-        clientGroup.addUser(u4);
+        ((UserComposite) clientGroup).addUser(u4);
         api.cancelContentFetch(clientGroup);
     }
 }

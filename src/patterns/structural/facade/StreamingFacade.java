@@ -30,29 +30,4 @@ public class StreamingFacade implements ClientServerCommunicationModified {
         client.cancelSubscription();
         server.handleSubscriptionStatus(client);
     }
-
-    public void watchContent(UserComposite clientGroup, String contentName, int contentSize) throws Exception {
-        clientGroup.watchMovie(contentName, contentSize);
-        System.out.println();
-        for (User client : clientGroup.getUsers()) {
-            server.displayMovie(client, contentName);
-        }
-    }
-
-    public void downloadContent(UserComposite clientGroup, String contentName) throws Exception {
-        clientGroup.downloadMovie(contentName);
-        System.out.println();
-        for (User client : clientGroup.getUsers()) {
-            server.streamMovie(client, contentName);
-            server.sendRecommendations(client);
-        }
-    }
-
-    public void cancelContentFetch(UserComposite clientGroup) throws Exception {
-        clientGroup.cancelSubscription();
-        System.out.println();
-        for (User client : clientGroup.getUsers()) {
-            server.handleSubscriptionStatus(client);
-        }
-    }
 }
