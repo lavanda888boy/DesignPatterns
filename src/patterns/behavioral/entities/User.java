@@ -1,8 +1,10 @@
 package src.patterns.behavioral.entities;
 
+import src.patterns.behavioral.observer.Observer;
+
 import java.util.Random;
 
-public class User {
+public class User implements Observer {
 
     private final int UPPER_ID_THRESHOLD = 1000000;
     private final int LOWER_ID_THRESHOLD = 100000;
@@ -42,5 +44,10 @@ public class User {
 
     public void setSubscriptionStatus(boolean subscriptionStatus) {
         this.subscriptionStatus = subscriptionStatus;
+    }
+
+    @Override
+    public void update(String message) {
+        System.out.println(this.getClass().getName() + " " + this.name + " received the message: " + message);
     }
 }

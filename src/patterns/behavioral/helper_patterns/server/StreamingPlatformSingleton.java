@@ -1,10 +1,11 @@
 package src.patterns.behavioral.helper_patterns.server;
 
 import src.patterns.behavioral.entities.User;
+import src.patterns.behavioral.observer.Subject;
 
 import java.util.Random;
 
-public class StreamingPlatformSingleton implements Streaming, Advertisement {
+public class StreamingPlatformSingleton implements Streaming, Advertisement, FilmManagement, Subject {
 
     private static StreamingPlatformSingleton streamingPlatformInstance = null;
 
@@ -22,6 +23,35 @@ public class StreamingPlatformSingleton implements Streaming, Advertisement {
             streamingPlatformInstance = new StreamingPlatformSingleton();
         }
         return streamingPlatformInstance;
+    }
+
+    @Override
+    public void register(User user) {
+        this.database.getUsers().add(user);
+    }
+
+    @Override
+    public void unregister(User user) {
+        this.database.getUsers().remove(user);
+    }
+
+    @Override
+    public void notifyObservers(String message) {
+        for (User user : this.database.getUsers()) {
+            user.update(message);
+        }
+    }
+
+    @Override
+    public void addFilm(String filmName) {
+        this.database.getFilms().add(filmName);
+        this.notifyObservers(filmName + " is now available for streaming!");
+    }
+
+    @Override
+    public void removeFilm(String filmName) {
+        this.database.getFilms().remove(filmName);
+        this.notifyObservers(filmName + " is no longer available for streaming!");
     }
 
     @Override

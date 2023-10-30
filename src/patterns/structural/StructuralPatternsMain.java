@@ -7,7 +7,6 @@ import java.util.List;
 import src.app.client.PremiumUser;
 import src.app.client.SimpleUser;
 import src.app.client.User;
-import src.app.database.Database;
 import src.patterns.creational.singleton.DatabaseSingleton;
 import src.patterns.structural.composite.UserComposite;
 import src.patterns.structural.decorator.PremiumUserDecorator;

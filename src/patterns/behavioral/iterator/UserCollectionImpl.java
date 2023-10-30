@@ -39,7 +39,7 @@ public class UserCollectionImpl implements UserCollection {
 
         @Override
         public boolean hasNext() {
-            if (this.index < this.users.size() - 1) {
+            if (this.index < this.users.size()) {
                 return true;
             } else {
                 return false;
