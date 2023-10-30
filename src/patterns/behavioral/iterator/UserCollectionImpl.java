@@ -1,6 +1,6 @@
 package src.patterns.behavioral.iterator;
 
-import src.app.client.User;
+import src.patterns.behavioral.entities.User;
 
 import java.util.Iterator;
 import java.util.List;
