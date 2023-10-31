@@ -3,7 +3,6 @@ package src.patterns.structural.proxy;
 import java.util.Random;
 
 import src.app.client.User;
-import src.app.database.Database;
 import src.patterns.creational.singleton.DatabaseSingleton;
 import src.patterns.structural.composite.UserComposite;
 

@@ -4,9 +4,9 @@ import src.patterns.behavioral.entities.User;
 
 public interface Subject {
 
-    public void register(User user);
+    void register(User user);
 
-    public void unregister(User user);
+    void unregister(User user);
 
-    public void notifyObservers(String message);
+    void notifyObservers(String message);
 }

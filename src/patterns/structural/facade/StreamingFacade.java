@@ -1,7 +1,6 @@
 package src.patterns.structural.facade;
 
 import src.app.client.User;
-import src.patterns.structural.composite.UserComposite;
 import src.patterns.structural.proxy.StreamingFunctionality;
 
 public class StreamingFacade implements ClientServerCommunicationModified {
