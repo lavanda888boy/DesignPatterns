@@ -20,5 +20,16 @@
 
 ## Implementation
 
+* `behavioral/entities + behavioral/helper_patterns`
+
+
+* `behavioral/iterator`
+
+
+* `behavioral/observer`
+
+
+* `behavioral/strategy`
+
 
 ## Conclusions / Screenshots / Results 
